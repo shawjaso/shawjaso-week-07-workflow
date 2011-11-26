@@ -12,8 +12,12 @@ class Technology
       event :approve, :transitions_to => :approved
     end
     state :approved do
-      event :publish, :transitions_to => :published
+      event :publish, :transitions_to => :policheck
       event :unapprove, :transitions_to => :unapproved
+    end
+    state :policheck do
+      event :policheckclean, :transitions_to => :published
+      event :foundhits, :transitions_to => :unapproved
     end
     state :published do
       event :retire,  :transitions_to => :retired
@@ -32,6 +36,10 @@ class Technology
   
   def publish
     puts 'technology is published'
+  end
+
+  def policheckclean
+    puts 'technology is PoliCheck clean'
   end
   
   def retire

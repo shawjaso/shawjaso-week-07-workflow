@@ -41,6 +41,7 @@ describe "states" do
     it "should be be published" do
       subject.approve!
       subject.publish!
+      subject.policheckclean!
       subject.current_state.to_s.should == "published"
     end
   end
